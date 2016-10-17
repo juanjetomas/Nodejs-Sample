@@ -1,39 +1,39 @@
 $(function() {
   $('#right-column').hide();
 
-  $('li.hero-name a').click(function() {
-  
+  $('li.company-name a').click(function() {
+
     var name = $(this).text();
-    
+
     $('#right-column h2').text(name);
-  
-    $('#facts li').remove();
-    
-    $.getJSON('/hero/' + name, function(data) {
+
+    $('#comments li').remove();
+
+    $.getJSON('/company/' + name, function(data) {
       for (var i = 0; i < data.length; i++) {
-        $('<li>').appendTo('#facts').text(data[i]);
+        $('<li>').appendTo('#comments').text(data[i]);
       }
     });
-    
+
     $('#right-column').show();
-    
+
     return false;
   });
-  
-  $('#add-new-fact').click(function() {
-    
+
+  $('#add-new-comment').click(function() {
+
     var name = $('#right-column h2').text();
-    var fact = $('#new-fact').val();
-  
+    var comment = $('#new-comment').val();
+
     $.ajax({
       type: "POST",
-      url: "/hero/add-fact",
-      data: JSON.stringify({ name: name, fact: fact }),
+      url: "/company/add-comment",
+      data: JSON.stringify({ name: name, comment: comment }),
       contentType: "application/json; charset=utf-8",
       dataType: "json",
       success: function(data) {
-        $('<li>').appendTo('#facts').text(fact);
-        $('#new-fact').val('');
+        $('<li>').appendTo('#comments').text(comment);
+        $('#new-comment').val('');
       },
       error: function(err) {
         var msg = 'Status: ' + err.status + ': ' + err.responseText;

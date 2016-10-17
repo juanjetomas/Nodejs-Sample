@@ -6,15 +6,15 @@ block content
   script(src="/javascripts/view.index.js")
 
   #left-column.column
-    h2 Elige tu héroe
-    ul#heroes
-      each hero in heroes
-        li(class='hero-name')
-          a(href='#') #{hero}
+    h2 Elige la empresa
+    ul#companies
+      each company in companies
+        li(class='company-name')
+          a(href='#') #{company}
 
   #right-column.column
-    h2 Facts
-    ul#facts
-    label(for="new-fact") Añadir nuevo fact:
-    textarea#new-fact
-    a(id='add-new-fact', href='#') Añadir
+    h2 Comentarios
+    ul#comments
+    label(for="new-comment") Añadir nuevo comentario:
+    textarea#new-comment
+    a(id='add-new-comment', href='#') Añadir
