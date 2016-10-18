@@ -22,7 +22,6 @@ var companies = [
   }
 ];
 
-
 exports.index = function(req, res) {
   var names = companies.map(function(p) { return p.name; });
   res.render('index', { companies: names })
