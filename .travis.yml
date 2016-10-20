@@ -4,5 +4,5 @@ node_js:
   - "6.8.1"
 before_install:
   - npm install -g mocha
-  - cd src; npm install .
-script: cd src; mocha
+  - cd . && npm install
+script: cd tests; mocha tests.js
