@@ -56,3 +56,5 @@ app.put('/addcomment/:compa/:comentario', function( req, response ) {
 
 	response.send(inicial.companiesshare);
 });
+
+module.exports = app;
