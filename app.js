@@ -10,6 +10,9 @@ var express = require('express')
 
 var app = express();
 
+var inicial = require('./routes/index.js');
+var _ = require('underscore');
+
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
   app.set('views', __dirname + '/views');
@@ -32,4 +35,24 @@ app.post('/company/add-comment', routes.addComment);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
+});
+
+//Parte REST
+
+app.get('/companies', function(request, response) {
+	response.send(inicial.companiesshare);
+});
+
+app.put('/addcomment/:compa/:comentario', function( req, response ) {
+  var company = _(inicial.companiesshare).detect(function(p) {
+    return p.name == req.params.compa;
+  });
+
+  if(company==null){
+    response.send("Empresa " + req.params.compa + " no registrada.\n");
+  }
+
+  company.comments.push(req.params.comentario);
+
+	response.send(inicial.companiesshare);
 });

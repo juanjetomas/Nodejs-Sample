@@ -28,6 +28,8 @@ var companies = [
   }
 ];
 
+module.exports.companiesshare = companies;
+
 exports.index = function(req, res) {
   var names = companies.map(function(p) { return p.name; });
   assert(names, "Colección de nombres de empresas");
