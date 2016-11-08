@@ -49,6 +49,8 @@ exports.company = function(req, res) {
   res.json(comments);
 }
 
+
+
 exports.addComment = function(req, res) {
   var company = _(companies).detect(function(p) {
     return p.name == req.body.name;
